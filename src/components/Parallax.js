@@ -67,6 +67,7 @@ class Parallax extends Component {
         </div>
         <div className="layer layer--3" data-multiplier="0.1"></div>
         <div className="layer layer--4"></div>
+        <div className="layer layer--5"></div>
       </section>
     );
   }
