@@ -15,16 +15,21 @@ class Parallax extends Component {
     let windowHeight = $window.outerHeight();
     let clientX = 0;
     let clientY = 0;
-
     let $layer = $(".layer");
+    let layersToAnimate = [];
 
-    for (var a = 0; a < $layer.length; a++) {
+    let a;
+    for (a = 0; a < $layer.length; a++) {
       if ($layer[a].hasAttribute("data-multiplier")) {
-        let $thisLayer = $($layer[a]);
-        let $thisLayerContent = $thisLayer.find(".layer__content");
-        let multiplier = parseFloat($thisLayer.attr("data-multiplier"));
-        TweenMax.set($thisLayer, { scale: 1 + multiplier });
+        layersToAnimate.push($($layer[a]));
       }
+    }
+
+    for (a = 0; a < layersToAnimate.length; a++) {
+      let $thisLayer = layersToAnimate[a];
+      let $thisLayerContent = $thisLayer.find(".layer__content");
+      let multiplier = parseFloat($thisLayer.attr("data-multiplier"));
+      TweenMax.set($thisLayer, { scale: 1 + multiplier });
     }
 
     $window.on("resize", (event) => {
@@ -42,15 +47,12 @@ class Parallax extends Component {
     });
 
     function adjustPostitions() {
-      for (var a = 0; a < $layer.length; a++) {
-        if ($layer[a].hasAttribute("data-multiplier")) {
-          let $thisLayer = $($layer[a]);
-          let multiplier = $thisLayer.attr("data-multiplier");
-          let offsetX = (windowWidth / 2 - clientX) * multiplier;
-          let offsetY = (windowHeight / 2 - clientY) * multiplier;
-          // console.log("offsetX:", offsetX, "offsetY:", offsetY);
-          TweenMax.to($thisLayer, 1.5, { x: offsetX, y: offsetY, ease: "easeOutExpo" });
-        }
+      for (a = 0; a < layersToAnimate.length; a++) {
+        let $thisLayer = layersToAnimate[a];
+        let multiplier = $thisLayer.attr("data-multiplier");
+        let offsetX = (windowWidth / 2 - clientX) * multiplier;
+        let offsetY = (windowHeight / 2 - clientY) * multiplier;
+        TweenMax.to($thisLayer, 1.5, { x: offsetX, y: offsetY, ease: "easeOutExpo" });
       }
     }
   }
@@ -65,7 +67,7 @@ class Parallax extends Component {
             <Logo className="logo__layer logo__layer--2" />
           </div>
         </div>
-        <div className="layer layer--3" data-multiplier="0.1"></div>
+        <div className="layer layer--3" data-multiplier="0.15"></div>
         <div className="layer layer--4"></div>
         <div className="layer layer--5"></div>
       </section>
