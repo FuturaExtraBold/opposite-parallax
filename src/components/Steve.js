@@ -5,10 +5,10 @@ import TweenMax from "gsap/TweenMax";
 
 import { ReactComponent as Logo } from "../images/ow/logo.svg";
 
-class Parallax extends Component {
+class Steve extends Component {
 
   componentDidMount() {
-    console.log("Parallax componentDidMount");
+    console.log("Steve componentDidMount");
 
     let $window = $(window);
     let windowWidth = $window.outerWidth();
@@ -58,21 +58,21 @@ class Parallax extends Component {
   }
 
   render() {
+    const imgUrl = require(`../images/steve/logo.png`);
     return (
       <section className="parallax">
         <div className="layer layer--1" data-multiplier="0.01"></div>
+        <div className="layer layer--4"></div>
         <div className="layer layer--2" data-multiplier="0.05">
           <div className="logo">
-            <Logo className="logo__layer logo__layer--1" />
-            <Logo className="logo__layer logo__layer--2" />
+            <img src={ imgUrl } />
           </div>
         </div>
         <div className="layer layer--3" data-multiplier="0.15"></div>
-        <div className="layer layer--4"></div>
         <div className="layer layer--5"></div>
       </section>
     );
   }
 }
 
-export default Parallax;
+export default Steve;
