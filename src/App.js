@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="parallax">
-          <div className="layer layer--1"></div>
+          <div className="layer layer--1" data-multiplier="0.01"></div>
           <div className="layer layer--2" data-multiplier="0.05">
             <div className="logo">
               <Logo className="logo__layer logo__layer--1" />

@@ -1,17 +1,21 @@
 .logo {
-  position: absolute;
-  top: 15%;
+  position: relative;
   width: 1000px;
-  height: 425px;
+  margin: 100px auto 0;
   &__layer {
-    position: absolute;
+    @include responsive-image;
+    padding: 0 60px;
   }
   &__layer--1 {
+    position: relative;
     path {
       fill: rgba(0,0,0,0.5);
     }
   }
   &__layer--2 {
+    position: absolute;
+    top: 0;
+    left: 0;
     transform: translate(-10px, -10px);
     path {
       fill: #fbae17;

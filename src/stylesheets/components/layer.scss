@@ -11,12 +11,12 @@
   background-size: cover;
 }
 .layer--2 {
-  // background-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 0, 0, 0.9);
 }
 .layer--3 {
-  transform-origin: center center;
   top: 10%;
-  background-color: rgba(255, 0, 0, 0.9);
+  transform-origin: center center;
+  // background-color: rgba(255, 0, 0, 0.9);
   background-image: url("../images/fg.png");
   background-position: 50%;
   background-size: cover;
