@@ -1,0 +1,20 @@
+.logo {
+  position: absolute;
+  top: 15%;
+  width: 1000px;
+  height: 425px;
+  &__layer {
+    position: absolute;
+  }
+  &__layer--1 {
+    path {
+      fill: rgba(0,0,0,0.5);
+    }
+  }
+  &__layer--2 {
+    transform: translate(-10px, -10px);
+    path {
+      fill: #fbae17;
+    }
+  }
+}

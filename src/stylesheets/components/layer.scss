@@ -1,0 +1,24 @@
+.layer {
+  @include fit;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.layer--1 {
+  background-image: url("../images/bg.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+.layer--2 {
+  // background-color: rgba(255, 0, 0, 0.2);
+}
+.layer--3 {
+  transform: scale(1.2);
+  transform-origin: center center;
+  // background-color: rgba(0, 255, 0, 0.2);
+  img {
+    position: absolute;
+    top: 0%;
+  }
+}
