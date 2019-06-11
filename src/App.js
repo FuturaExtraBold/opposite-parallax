@@ -16,10 +16,8 @@ class App extends Component {
     let $window = $(window);
     let windowWidth = $window.outerWidth();
     let windowHeight = $window.outerHeight();
-
-    let $logo = $(".logo");
-    let logoWidth = $logo.outerWidth();
-    let logoHeight = $logo.outerHeight();
+    let clientX = 0;
+    let clientY = 0;
 
     let $layer = $(".layer");
 
@@ -28,24 +26,36 @@ class App extends Component {
         let $thisLayer = $($layer[a]);
         let $thisLayerContent = $thisLayer.find(".layer__content");
         let multiplier = parseFloat($thisLayer.attr("data-multiplier"));
-        // console.log("adjustedScale:", parseFloat(multiplier) + 1);
         TweenMax.set($thisLayer, { scale: 1 + multiplier });
-        // TweenMax.set($thisLayerContent, { scale: (100 / (1 + multiplier)) / 100 });
       }
     }
 
+    $window.on("resize", (event) => {
+      windowWidth = $window.outerWidth();
+      windowHeight = $window.outerHeight();
+      clientX = 0;
+      clientY = 0;
+      adjustPostitions();
+    });
+
     $window.on("mousemove", (event) => {
+      clientX = event.clientX;
+      clientY = event.clientY;
+      adjustPostitions();
+    });
+
+    function adjustPostitions() {
       for (var a = 0; a < $layer.length; a++) {
         if ($layer[a].hasAttribute("data-multiplier")) {
           let $thisLayer = $($layer[a]);
           let multiplier = $thisLayer.attr("data-multiplier");
-          let offsetX = (windowWidth / 2 - event.clientX) * multiplier;
-          let offsetY = (windowHeight / 2 - event.clientY) * multiplier;
+          let offsetX = (windowWidth / 2 - clientX) * multiplier;
+          let offsetY = (windowHeight / 2 - clientY) * multiplier;
           // console.log("offsetX:", offsetX, "offsetY:", offsetY);
           TweenMax.to($thisLayer, 1.5, { x: offsetX, y: offsetY, ease: "easeOutExpo" });
         }
       }
-    });
+    }
   }
 
   render() {
